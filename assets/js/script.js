@@ -3,7 +3,6 @@ let gameInterval;
 const windows = document.querySelectorAll('.window');
 const scoreDisplay = document.getElementById('score');
 const machineGunButton = document.getElementById('machineGun');
-
 const images = {
     criminals: ['assets/images/criminal1.webp', 'assets/images/criminal2.png'],
     innocents: ['assets/images/innocent1.webp', 'assets/images/innocent2.webp']
