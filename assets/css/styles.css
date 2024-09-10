@@ -6,6 +6,7 @@ body {
     height: 100vh;
     background-image: url('assets/images/bar.jpg');
     background-size: cover;
+    background-position: center;
     margin: 0;
 }
 
@@ -42,7 +43,7 @@ body {
     bottom: 0;
 }
 
-#score {
+#score, #killCount {
     margin-top: 20px;
     font-size: 24px;
 }

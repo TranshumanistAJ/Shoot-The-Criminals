@@ -1,7 +1,9 @@
 let score = 0;
+let killCount = 0;
 let gameInterval;
 const windows = document.querySelectorAll('.window');
 const scoreDisplay = document.getElementById('score');
+const killCountDisplay = document.getElementById('killCount');
 const machineGunButton = document.getElementById('machineGun');
 
 function startGame() {
@@ -21,10 +23,10 @@ function startGame() {
                 window.classList.add('show');
                 setTimeout(() => {
                     window.classList.remove('show');
-                }, 2000);
+                }, 3500); // Adjusted interval to 3.5 seconds
             }
         });
-    }, 2000); // Adjusted interval to 2 seconds
+    }, 3500); // Adjusted interval to 3.5 seconds
 }
 
 windows.forEach(window => {
@@ -33,12 +35,14 @@ windows.forEach(window => {
         const innocentImage = window.querySelector('.innocent[style*="block"]');
         if (criminalImage) {
             score += 10;
+            killCount += 1;
             window.classList.remove('show');
             criminalImage.style.display = 'none';
         } else if (innocentImage) {
             score -= 10;
         }
         scoreDisplay.textContent = `Score: ${score}`;
+        killCountDisplay.textContent = `Criminals Killed: ${killCount}`;
         if (score >= 200) {
             alert('You win!');
             clearInterval(gameInterval);
@@ -56,6 +60,7 @@ machineGunButton.addEventListener('click', () => {
     if (allCriminals) {
         windows.forEach(window => {
             score += 20;
+            killCount += 1;
             window.classList.remove('show');
             const criminalImage = window.querySelector('.criminal[style*="block"]');
             if (criminalImage) {
@@ -67,6 +72,7 @@ machineGunButton.addEventListener('click', () => {
         clearInterval(gameInterval);
     }
     scoreDisplay.textContent = `Score: ${score}`;
+    killCountDisplay.textContent = `Criminals Killed: ${killCount}`;
 });
 
 startGame();
