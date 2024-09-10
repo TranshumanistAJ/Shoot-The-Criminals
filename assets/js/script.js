@@ -3,39 +3,39 @@ let gameInterval;
 const windows = document.querySelectorAll('.window');
 const scoreDisplay = document.getElementById('score');
 const machineGunButton = document.getElementById('machineGun');
-const images = {
-    criminals: ['assets/images/criminal1.webp', 'assets/images/criminal2.png'],
-    innocents: ['assets/images/innocent1.webp', 'assets/images/innocent2.webp']
-};
 
 function startGame() {
     gameInterval = setInterval(() => {
         windows.forEach(window => {
-            window.classList.remove('criminal', 'innocent', 'show');
-            window.innerHTML = '';
+            window.classList.remove('show');
+            const images = window.querySelectorAll('img');
+            images.forEach(img => img.style.display = 'none');
             const random = Math.random();
             if (random < 0.3) {
-                const criminalImage = images.criminals[Math.floor(Math.random() * images.criminals.length)];
-                window.classList.add('criminal', 'show');
-                window.innerHTML = `<img src="${criminalImage}" alt="Criminal">`;
+                const criminalImage = images[Math.floor(Math.random() * 2)];
+                criminalImage.style.display = 'block';
+                window.classList.add('show');
             } else if (random < 0.5) {
-                const innocentImage = images.innocents[Math.floor(Math.random() * images.innocents.length)];
-                window.classList.add('innocent', 'show');
-                window.innerHTML = `<img src="${innocentImage}" alt="Innocent">`;
+                const innocentImage = images[Math.floor(Math.random() * 2) + 2];
+                innocentImage.style.display = 'block';
+                window.classList.add('show');
                 setTimeout(() => {
                     window.classList.remove('show');
                 }, 2000);
             }
         });
-    }, 1000);
+    }, 2000); // Adjusted interval to 2 seconds
 }
 
 windows.forEach(window => {
     window.addEventListener('click', () => {
-        if (window.classList.contains('criminal')) {
+        const criminalImage = window.querySelector('.criminal[style*="block"]');
+        const innocentImage = window.querySelector('.innocent[style*="block"]');
+        if (criminalImage) {
             score += 10;
             window.classList.remove('show');
-        } else if (window.classList.contains('innocent')) {
+            criminalImage.style.display = 'none';
+        } else if (innocentImage) {
             score -= 10;
         }
         scoreDisplay.textContent = `Score: ${score}`;
@@ -49,7 +49,7 @@ windows.forEach(window => {
 machineGunButton.addEventListener('click', () => {
     let allCriminals = true;
     windows.forEach(window => {
-        if (!window.classList.contains('criminal')) {
+        if (!window.querySelector('.criminal[style*="block"]')) {
             allCriminals = false;
         }
     });
@@ -57,6 +57,10 @@ machineGunButton.addEventListener('click', () => {
         windows.forEach(window => {
             score += 20;
             window.classList.remove('show');
+            const criminalImage = window.querySelector('.criminal[style*="block"]');
+            if (criminalImage) {
+                criminalImage.style.display = 'none';
+            }
         });
     } else {
         alert('You lose!');
