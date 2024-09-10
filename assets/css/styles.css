@@ -10,10 +10,18 @@ body {
     margin: 0;
 }
 
+h1 {
+    margin-bottom: 20px;
+    font-size: 36px;
+    color: #fff;
+    text-shadow: 2px 2px 4px #000;
+}
+
 #game {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
 }
 
 .window {
@@ -27,7 +35,6 @@ body {
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    margin: 0 5px; /* Adjusted margin for closer windows */
 }
 
 .window img {
@@ -46,6 +53,8 @@ body {
 #score, #killCount {
     margin-top: 20px;
     font-size: 24px;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
 }
 
 #machineGun {
