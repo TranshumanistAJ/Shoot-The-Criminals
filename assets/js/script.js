@@ -47,8 +47,8 @@ windows.forEach(window => {
             // If an innocent is clicked,this interacts
             score -= 10;
         }
-        scoreDisplay.textContent = `Score: ${score}`;
-        killCountDisplay.textContent = `Criminals Killed: ${killCount}`;
+        scoreDisplay.textContent = Score: ${score};
+        killCountDisplay.textContent = Criminals Killed: ${killCount};
         if (score >= 200) {
             alert('You win!');
             clearInterval(gameInterval);
@@ -80,9 +80,10 @@ machineGunButton.addEventListener('click', () => {
         alert('You lose!');
         clearInterval(gameInterval);
     }
-    scoreDisplay.textContent = `Score: ${score}`;
-    killCountDisplay.textContent = `Criminals Killed: ${killCount}`;
+    scoreDisplay.textContent = Score: ${score};
+    killCountDisplay.textContent = Criminals Killed: ${killCount};
 });
 
 // Start the game
 startGame();
+
