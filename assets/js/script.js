@@ -86,4 +86,3 @@ machineGunButton.addEventListener('click', () => {
 
 // Start the game
 startGame();
-
