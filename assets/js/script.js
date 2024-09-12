@@ -4,7 +4,7 @@ let gameInterval; // Storing the interval for the game loop
 const windows = document.querySelectorAll('.window'); // To select all window elements
 const scoreDisplay = document.getElementById('score'); // To select the score display element
 const killCountDisplay = document.getElementById('killCount'); // To select the kill count display element
-const machineGunButton = document.getElementById('machineGun'); // To selects the machine gun button
+const machineGunButton = document.getElementById('machineGun'); // To select the machine gun button
 
 // This part of my java file is the function to start the game
 function startGame() {
