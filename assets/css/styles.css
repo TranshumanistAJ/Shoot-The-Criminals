@@ -2,74 +2,84 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     height: 100vh;
-    overflow: hidden;
-    position: relative;
+    background-image: url('assets/images/bar.jpg');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
 }
 
-
+.game-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
 }
 
-h1 {
-    margin-bottom: 20px;
-    font-size: 36px;
+h1, h2 {
     color: #fff;
     text-shadow: 2px 2px 4px #000;
 }
 
-h2 {
-    margin-bottom: 20px;
+h1 {
     font-size: 36px;
-    color: #ffffff;
-    text-shadow: 2px 2px 4px #ff0202;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ff0000;
 }
 
 #game {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 10px;
+    grid-gap: 10px;
+    margin-bottom: 20px;
 }
 
 .window {
-    width: 100px;
-    height: 100px;
-    background-color: #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #000;
+    width: 150px;
+    height: 150px;
+    background-color: #333;
+    border: 2px solid #fff;
     cursor: pointer;
-    position: relative;
     overflow: hidden;
+    position: relative;
 }
 
 .window img {
-    position: absolute;
-    bottom: -100px;
-    transition: bottom 0.5s;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
 
-.window.show img {
-    bottom: 0;
+.window img.active {
+    opacity: 1;
 }
 
 #score, #killCount {
-    margin-top: 20px;
-    font-size: 24px;
     color: #fff;
-    text-shadow: 1px 1px 2px #000;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #fff;
+    font-size: 18px;
 }
 
 @media (max-width: 600px) {
     .window {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
     }
 }
