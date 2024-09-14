@@ -1,70 +1,94 @@
-let score = 0; // This is to keep track of the score
-let killCount = 0; // This keeps track of the number of criminals killed
-let gameInterval; // This is to store the interval for the game loop
-const windows = document.querySelectorAll('.window'); // Selects all window elements
-const scoreDisplay = document.getElementById('score'); // Selects the score display element
-const killCountDisplay = document.getElementById('killCount'); // Selects the kill count display element
+const windows = document.querySelectorAll('.window');
+const scoreDisplay = document.getElementById('score');
+const killCountDisplay = document.getElementById('killCount');
 
-// Function to start my game project
-function startGame() {
-    gameInterval = setInterval(() => {
-        windows.forEach(window => {
-            window.classList.remove('show'); // Remove the show class from all windows
-            const images = window.querySelectorAll('img'); // Select all images in the window
-            images.forEach(img => img.style.display = 'none'); // Hide all images
-        });
+let score = 0;
+let killCount = 0;
+let gameInterval;
 
-        // Randomly select one window to show a criminal
-        const criminalWindow = windows[Math.floor(Math.random() * windows.length)];
-        const criminalImage = criminalWindow.querySelector('.criminal');
-        criminalImage.style.display = 'block';
-        criminalWindow.classList.add('show');
+const criminals = ['assets/images/criminal1.jpeg', 'assets/images/criminal2.jpeg'];
+const innocents = ['assets/images/innocent1.jpeg', 'assets/images/innocent2.jpeg'];
 
-        // Show innocents in the other windows
-        windows.forEach(window => {
-            if (window !== criminalWindow) {
-                const innocentImages = window.querySelectorAll('.innocent');
-                const innocentImage = innocentImages[Math.floor(Math.random() * innocentImages.length)];
-                innocentImage.style.display = 'block';
-                window.classList.add('show');
-            }
-        });
-
-        // Check if the player fails to identify the criminal in time
-        setTimeout(() => {
-            if (document.querySelectorAll('.criminal[style*="block"]').length > 0) {
-                alert('You lose!');
-                clearInterval(gameInterval);
-            }
-        }, 2500); // Player has 2.5 seconds to identify the criminal
-    }, 2500); // New images appear every 2.5 seconds
+function createImage(src, className) {
+    const img = document.createElement('img');
+    img.src = src;
+    img.className = className;
+    return img;
 }
 
-// Event listener for clicking on windows
-windows.forEach(window => {
-    window.addEventListener('click', () => {
-        const criminalImage = window.querySelector('.criminal[style*="block"]');
-        if (criminalImage) {
-            // If a criminal is clicked
-            score += 10;
-            killCount += 1;
-            windows.forEach(win => {
-                win.classList.remove('show');
-                const imgs = win.querySelectorAll('img');
-                imgs.forEach(img => img.style.display = 'none');
-            });
-        } else {
-            // If an innocent is clicked
-            score -= 10;
-        }
-        scoreDisplay.textContent = Score: ${score};
-        killCountDisplay.textContent = Criminals Killed: ${killCount};
-        if (score >= 200) {
-            alert('You win!');
-            clearInterval(gameInterval);
+function clearWindows() {
+    windows.forEach(window => {
+        window.innerHTML = '';
+    });
+}
+
+function showImage(window, imageSrc, isActive) {
+    const img = createImage(imageSrc, isActive ? 'active' : '');
+    window.appendChild(img);
+    if (isActive) {
+        setTimeout(() => img.classList.add('active'), 50);
+    }
+}
+
+function startRound() {
+    clearWindows();
+    const criminalWindow = windows[Math.floor(Math.random() * windows.length)];
+    const criminalImage = criminals[Math.floor(Math.random() * criminals.length)];
+    
+    showImage(criminalWindow, criminalImage, true);
+    criminalWindow.dataset.isCriminal = 'true';
+
+    windows.forEach(window => {
+        if (window !== criminalWindow) {
+            const innocentImage = innocents[Math.floor(Math.random() * innocents.length)];
+            showImage(window, innocentImage, true);
+            window.dataset.isCriminal = 'false';
         }
     });
-});
+}
 
-// Start the game
+function endGame(message) {
+    clearInterval(gameInterval);
+    alert(message);
+    windows.forEach(window => window.removeEventListener('click', handleClick));
+}
+
+function handleClick(event) {
+    const clickedWindow = event.currentTarget;
+    const isCriminal = clickedWindow.dataset.isCriminal === 'true';
+
+    if (isCriminal) {
+        score += 10;
+        killCount++;
+        scoreDisplay.textContent = `Score: ${score}`;
+        killCountDisplay.textContent = `Criminals Killed: ${killCount}`;
+
+        if (killCount >= 20) {
+            endGame('You win! You\'ve killed 20 criminals!');
+        } else {
+            startRound();
+        }
+    } else {
+        endGame('Game Over! You shot an innocent person.');
+    }
+}
+
+function startGame() {
+    score = 0;
+    killCount = 0;
+    scoreDisplay.textContent = 'Score: 0';
+    killCountDisplay.textContent = 'Criminals Killed: 0';
+
+    windows.forEach(window => window.addEventListener('click', handleClick));
+
+    gameInterval = setInterval(() => {
+        startRound();
+        setTimeout(() => {
+            if (document.querySelector('.window[data-is-criminal="true"]')) {
+                endGame('Game Over! You didn\'t shoot the criminal in time.');
+            }
+        }, 2400);
+    }, 2500);
+}
+
 startGame();
