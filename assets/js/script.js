@@ -1,50 +1,60 @@
-let score = 0; // To keep track of the score
-let killCount = 0; // Keeping the track of the number of criminals killed
-let gameInterval; // Storing the interval for the game loop
-const windows = document.querySelectorAll('.window'); // To select all window elements
-const scoreDisplay = document.getElementById('score'); // To select the score display element
-const killCountDisplay = document.getElementById('killCount'); // To select the kill count display element
-const machineGunButton = document.getElementById('machineGun'); // To select the machine gun button
+let score = 0; // This is to keep track of the score
+let killCount = 0; // This keeps track of the number of criminals killed
+let gameInterval; // This is to store the interval for the game loop
+const windows = document.querySelectorAll('.window'); // Selects all window elements
+const scoreDisplay = document.getElementById('score'); // Selects the score display element
+const killCountDisplay = document.getElementById('killCount'); // Selects the kill count display element
 
-// This part of my java file is the function to start the game
+// Function to start my game project
 function startGame() {
     gameInterval = setInterval(() => {
         windows.forEach(window => {
-            window.classList.remove('show'); // Here is to remove the show class from all windows
+            window.classList.remove('show'); // Remove the show class from all windows
             const images = window.querySelectorAll('img'); // Select all images in the window
             images.forEach(img => img.style.display = 'none'); // Hide all images
-            const random = Math.random();
-            if (random < 0.5) {
-                // Show a criminal image, that is when the player is supposed to shoot.
-                const criminalImage = images[Math.floor(Math.random() * 2)];
-                criminalImage.style.display = 'block';
-                window.classList.add('show');
-            } else {
-                // Show an innocent image , that is when the player is not suppoed to shoot
-                const innocentImage = images[Math.floor(Math.random() * 2) + 2];
+        });
+
+        // Randomly select one window to show a criminal
+        const criminalWindow = windows[Math.floor(Math.random() * windows.length)];
+        const criminalImage = criminalWindow.querySelector('.criminal');
+        criminalImage.style.display = 'block';
+        criminalWindow.classList.add('show');
+
+        // Show innocents in the other windows
+        windows.forEach(window => {
+            if (window !== criminalWindow) {
+                const innocentImages = window.querySelectorAll('.innocent');
+                const innocentImage = innocentImages[Math.floor(Math.random() * innocentImages.length)];
                 innocentImage.style.display = 'block';
                 window.classList.add('show');
-                setTimeout(() => {
-                    window.classList.remove('show');
-                }, 3500); // Innocent images stay for 3.5 seconds to give the player more time
             }
         });
-    }, 3500); // I make new images appear every 3.5 seconds
+
+        // Check if the player fails to identify the criminal in time
+        setTimeout(() => {
+            if (document.querySelectorAll('.criminal[style*="block"]').length > 0) {
+                alert('You lose!');
+                clearInterval(gameInterval);
+            }
+        }, 2500); // Player has 2.5 seconds to identify the criminal
+    }, 2500); // New images appear every 2.5 seconds
 }
 
 // Event listener for clicking on windows
 windows.forEach(window => {
     window.addEventListener('click', () => {
         const criminalImage = window.querySelector('.criminal[style*="block"]');
-        const innocentImage = window.querySelector('.innocent[style*="block"]');
         if (criminalImage) {
-            // If a criminal is clicked, which means game continues too
+            // If a criminal is clicked
             score += 10;
             killCount += 1;
-            window.classList.remove('show');
-            criminalImage.style.display = 'none';
-        } else if (innocentImage) {
-            // If an innocent is clicked,this interacts
+            windows.forEach(win => {
+                win.classList.remove('show');
+                const imgs = win.querySelectorAll('img');
+                imgs.forEach(img => img.style.display = 'none');
+            });
+        } else {
+            // If an innocent is clicked
             score -= 10;
         }
         scoreDisplay.textContent = Score: ${score};
@@ -54,34 +64,6 @@ windows.forEach(window => {
             clearInterval(gameInterval);
         }
     });
-});
-
-// Event listener for the machine gun button
-machineGunButton.addEventListener('click', () => {
-    let allCriminals = true;
-    windows.forEach(window => {
-        if (!window.querySelector('.criminal[style*="block"]')) {
-            allCriminals = false;
-        }
-    });
-    if (allCriminals) {
-        // If all windows show criminals  , this part is helped and inspired by AI (online free AI)
-        windows.forEach(window => {
-            score += 20;
-            killCount += 1;
-            window.classList.remove('show');
-            const criminalImage = window.querySelector('.criminal[style*="block"]');
-            if (criminalImage) {
-                criminalImage.style.display = 'none';
-            }
-        });
-    } else {
-        // If not all windows show criminals
-        alert('You lose!');
-        clearInterval(gameInterval);
-    }
-    scoreDisplay.textContent = Score: ${score};
-    killCountDisplay.textContent = Criminals Killed: ${killCount};
 });
 
 // Start the game

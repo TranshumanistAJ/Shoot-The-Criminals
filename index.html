@@ -6,40 +6,20 @@
     <title>Shoot the Criminals</title>
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body background="assets/images/bar.jpg">
-    <div class="background"></div>
-    <h1>Kill the Criminals!</h1>
-    <h2> Criminals are the ones that carry guns!</h2>
-    <h2>Press the windows when it is a criminal</h2>
-    <div id="game">
-        <div class="window" id="window1">
-            <img src="assets/images/criminal1.jpeg" class="criminal" alt="Criminal">
-            <img src="assets/images/criminal2.jpeg" class="criminal" alt="Criminal">
-            <img src="assets/images/innocent1.jpeg" class="innocent" alt="Innocent">
-            <img src="assets/images/innocent2.jpeg" class="innocent" alt="Innocent">
+<body>
+    <div class="game-container">
+        <h1>Kill the Criminals!</h1>
+        <h2>Shoot the ones that carry guns!</h2>
+        <div id="game">
+            <div class="window" id="window1"></div>
+            <div class="window" id="window2"></div>
+            <div class="window" id="window3"></div>
+            <div class="window" id="window4"></div>
         </div>
-        <div class="window" id="window2">
-            <img src="assets/images/criminal1.jpeg" class="criminal" alt="Criminal">
-            <img src="assets/images/criminal2.jpeg" class="criminal" alt="Criminal">
-            <img src="assets/images/innocent1.jpeg" class="innocent" alt="Innocent">
-            <img src="assets/images/innocent2.jpeg" class="innocent" alt="Innocent">
-        </div>
-        <div class="window" id="window3">
-            <img src="assets/images/criminal1.jpeg" class="criminal" alt="Criminal">
-            <img src="assets/images/criminal2.jpeg" class="criminal" alt="Criminal">
-            <img src="assets/images/innocent1.jpeg" class="innocent" alt="Innocent">
-            <img src="assets/images/innocent2.jpeg" class="innocent" alt="Innocent">
-        </div>
-        <div class="window" id="window4">
-            <img src="assets/images/criminal1.jpeg" class="criminal" alt="Criminal">
-            <img src="assets/images/criminal2.jpeg" class="criminal" alt="Criminal">
-            <img src="assets/images/innocent1.jpeg" class="innocent" alt="Innocent">
-            <img src="assets/images/innocent2.jpeg" class="innocent" alt="Innocent">
-        </div>
+        <div id="score">Score: 0</div>
+        <div id="killCount">Criminals Killed: 0</div>
+        <p>Identify the criminal within 2.5 seconds!</p>
     </div>
-    <div id="score">Score: 0</div>
-    
-    <div id="killCount">Criminals Killed: 0</div>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
