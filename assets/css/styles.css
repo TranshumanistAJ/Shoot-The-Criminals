@@ -85,7 +85,7 @@ p {
 
 /* Modal Styles */
 .modal {
-    display: none;
+    display: none;  /* Default hidden */
     position: fixed;
     z-index: 1;
     left: 0;
@@ -99,14 +99,17 @@ p {
 }
 
 .modal-content {
-    background-color: #fff;
+    background-color: #b3acac;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
+    
 }
+
 
 .modal-content p {
     margin-bottom: 20px;
+    color: #000;
 }
 
 .modal-content button {
