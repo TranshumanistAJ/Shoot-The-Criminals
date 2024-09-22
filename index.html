@@ -19,7 +19,25 @@
         <div id="score">Score: 0</div>
         <div id="killCount">Criminals Killed: 0</div>
         <p>Identify the criminal within 2.5 seconds!</p>
+        <p class="credits">Game created by Abdulmajeed Alshammari</p>
     </div>
+
+    <!-- Instructions Modal -->
+    <div id="instructionsModal" class="modal">
+        <div class="modal-content">
+            <p>For each round, you have 2.5 seconds to identify the criminal. The criminal carries a gun. You need to press on the window that has the criminal before the 2.5 seconds run out. If you press on an innocent, you lose the game too. Are you ready?</p>
+            <button id="startGameButton">OK</button>
+        </div>
+    </div>
+
+    <!-- Outcome Modal -->
+    <div id="outcomeModal" class="modal">
+        <div class="modal-content">
+            <p id="outcomeMessage"></p>
+            <button id="restartGameButton">Restart</button>
+        </div>
+    </div>
+
     <script src="assets/js/script.js"></script>
 </body>
 </html>
