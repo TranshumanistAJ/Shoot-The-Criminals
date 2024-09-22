@@ -74,8 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isCriminal) {
             score += 10;
             killCount++;
-            scoreDisplay.textContent = Score: ${score};
-            killCountDisplay.textContent = Criminals Killed: ${killCount};
+            scoreDisplay.textContent = `Score: ${score}`;
+            killCountDisplay.textContent = `Criminals Killed: ${killCount}`;
 
             if (killCount >= 20) {
                 endGame('Congratulations, you have won!');
@@ -108,6 +108,4 @@ document.addEventListener('DOMContentLoaded', () => {
         startGame();
     });
 
-    // Show instructions modal on game load
-    instructionsModal.style.display = 'flex';
-});
+    //
