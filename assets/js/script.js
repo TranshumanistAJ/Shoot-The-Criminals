@@ -32,6 +32,7 @@ function showImage(window, imageSrc, isActive) {
 
 function startRound() {
     clearWindows();
+    
     const criminalWindow = windows[Math.floor(Math.random() * windows.length)];
     const criminalImage = criminals[Math.floor(Math.random() * criminals.length)];
     
@@ -45,15 +46,22 @@ function startRound() {
             window.dataset.isCriminal = 'false';
         }
     });
+
+    // Set a timeout for missing the criminal
+    gameInterval = setTimeout(() => {
+        endGame('Game Over! You didn\'t shoot the criminal in time.');
+    }, 2500);
 }
 
 function endGame(message) {
-    clearInterval(gameInterval);
+    clearTimeout(gameInterval);
     alert(message);
     windows.forEach(window => window.removeEventListener('click', handleClick));
 }
 
 function handleClick(event) {
+    clearTimeout(gameInterval);  // Clear timeout when a window is clicked
+    
     const clickedWindow = event.currentTarget;
     const isCriminal = clickedWindow.dataset.isCriminal === 'true';
 
@@ -66,7 +74,7 @@ function handleClick(event) {
         if (killCount >= 20) {
             endGame('You win! You\'ve killed 20 criminals!');
         } else {
-            startRound();
+            startRound();  // Start a new round after killing a criminal
         }
     } else {
         endGame('Game Over! You shot an innocent person.');
@@ -81,14 +89,7 @@ function startGame() {
 
     windows.forEach(window => window.addEventListener('click', handleClick));
 
-    gameInterval = setInterval(() => {
-        startRound();
-        setTimeout(() => {
-            if (document.querySelector('.window[data-is-criminal="true"]')) {
-                endGame('Game Over! You didn\'t shoot the criminal in time.');
-            }
-        }, 2400);
-    }, 2500);
+    startRound();  // Start the first round immediately
 }
 
 startGame();
