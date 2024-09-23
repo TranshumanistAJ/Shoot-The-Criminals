@@ -41,6 +41,36 @@ Core game logic, event handling, and dynamic rendering of images.
 If you lose, a game-over modal will pop up, allowing you to restart.
 
 
+
+
+
+## Validation:
+
+### HTML : 
+I have tested my html file and found no errors: 
+https://validator.w3.org/nu/?doc=https://transhumanistaj.github.io/Shoot-The-Criminals/index.html
+
+### css:
+I have tested my CSS file and found no errors:
+https://jigsaw.w3.org/css-validator/validator?uri=https://transhumanistaj.github.io/Shoot-The-Criminals
+
+
+### JavaScript:
+I have tested my JavaScript below in the screenshot:
+![Java validation screenshot](assets/images/java-validation.jpeg)
+
+
+
+## Responsiveness :
+![Screenshot for all devices](assets/images/responsive-for-all-devices.jpeg)
+## Further Testing:
+ 1: The Website was tested on Google Chrome, Internet Explorer, Microsoft Edge and Safari browsers.
+
+2: The website was viewed on a variety of devices such as Desktop, Laptop, iPhone7, iPhone 8 & iPhoneX.
+
+3: A large amount of testing was done to ensure that all pages were linking correctly.
+
+
 ## Credits
 #### Game Developer: Abdulmajeed Alshammari
 #### Images: 
@@ -48,4 +78,6 @@ If you lose, a game-over modal will pop up, allowing you to restart.
 
 2: The criminal 1 & 2, innocent 1 & 2 images online free AI-image generator source: 
 https://deepai.org/machine-learning-model/3d-character-generator  .
+
+
 
