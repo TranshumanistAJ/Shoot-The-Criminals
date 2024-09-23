@@ -74,6 +74,7 @@ I have tested my JavaScript below in the screenshot:
 
 ## Responsiveness :
 ![Screenshot for all devices](assets/images/responsive-for-all-devices.jpeg)
+I have tested my project responsiveness on all devices and this is a screenshot of it. 
 ## Further Testing:
  1: The Website was tested on Google Chrome, Internet Explorer, Microsoft Edge and Safari browsers.
 
@@ -90,7 +91,7 @@ I have tested my JavaScript below in the screenshot:
 2: The criminal 1 & 2, innocent 1 & 2 images online free AI-image generator source: 
 https://deepai.org/machine-learning-model/3d-character-generator  .
 
-3: Mentorship: 
+#### Mentorship: 
 I would like to thank my mentor, Tim Nelson, for his invaluable guidance and feedback throughout the development process. His insights greatly improved the game's design and functionality.
 
 
