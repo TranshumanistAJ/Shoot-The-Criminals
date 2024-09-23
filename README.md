@@ -43,3 +43,9 @@ If you lose, a game-over modal will pop up, allowing you to restart.
 
 ## Credits
 #### Game Developer: Abdulmajeed Alshammari
+#### Images: 
+1: The bar (background) image source: https://pixabay.com/photos/bar-drinks-alcohol-fridge-926256/
+
+2: The criminal 1 & 2, innocent 1 & 2 images online free AI-image generator source: 
+https://deepai.org/machine-learning-model/3d-character-generator  .
+
