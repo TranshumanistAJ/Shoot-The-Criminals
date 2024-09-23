@@ -28,7 +28,7 @@ Styling for the game, including the modal popups, windows, and background.
 #### JavaScript (ES6): 
 Core game logic, event handling, and dynamic rendering of images.
 
-## In-Game Screenshots for Certains Stages:
+## In-Game Screenshots with Demonstration:
 1: Upon launching the game, an instructional dialog box will appear, guiding players through the basic rules and objectives. This modal ensures that users understand how to identify the criminal among the civilians and the consequences of their actions. By clearly outlining the gameplay mechanics, the dialog enhances user experience and prepares players for the challenges ahead.
 ![Screenshot](assets/images/intro-info-screen.jpeg)
 
