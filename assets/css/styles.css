@@ -10,13 +10,14 @@ body {
     background-position: center;
     font-family: Arial, sans-serif;
 }
-
+/*Main Style for the game*/
 .game-container {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 20px;
     border-radius: 10px;
     text-align: center;
 }
+/*I chose the color rgba because it suits the colour of the background image, the bar, I made it center text to keep the attention of the user hence better experience*/
 
 h1, h2 {
     color: #fff;
@@ -33,45 +34,45 @@ h2 {
     margin-bottom: 20px;
     color: #ff0000;
 }
-
+/* Styles for the game layout using a grid system */
 #game {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
-    margin-bottom: 20px;
+    display: grid; /* Enables grid layout for the game container */
+    grid-template-columns: repeat(2, 1fr);  /* Creates two equal columns for the game windows */
+    grid-gap: 10px; /* Adds space between the grid items */
+    margin-bottom: 20px;  /* Adds space below the game container */
 }
-
+/* Styles for individual game windows */
 .window {
     width: 150px;
     height: 150px;
-    background-color: #333;
-    border: 2px solid #fff;
+    background-color: #333; /* Dark background color for visibility */
+    border: 2px solid #fff; /* White border for contrast */
     cursor: pointer;
     overflow: hidden;
-    position: relative;
+    position: relative; /* Establishes a positioning context for child elements */
 }
-
+/* Styles for images within the game windows */
 .window img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100%; /* Makes the image fill the entire window */
+    height: 100%; /* Ensures the image takes the full height */
+    object-fit: cover; /* Maintains aspect ratio while covering the area */
     position: absolute;
     top: 0;
     left: 0;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for opacity changes, a nice touch */
 }
-
+/* Active class to show the criminal image */
 .window img.active {
-    opacity: 1;
+    opacity: 1; /* Makes the image visible when active */
 }
-
+/* Styles for score and kill count display */
 #score, #killCount {
     color: #fff;
     font-size: 24px;
     margin-bottom: 10px;
 }
-
+/* General paragraph styling */
 p {
     color: #fff;
     font-size: 18px;
@@ -97,30 +98,30 @@ p {
     justify-content: center;
     align-items: center;
 }
-
+/* Styles for the modal content area */
 .modal-content {
-    background-color: #b3acac;
-    padding: 20px;
+    background-color: #b3acac; /* Light gray background for the modal */
+    padding: 20px; /* Adds space inside the modal */
     border-radius: 10px;
     text-align: center;
     
 }
 
-
+/* Styles for paragraphs within the modal content */
 .modal-content p {
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Space below paragraphs for separation */
     color: #000;
 }
-
+/* Styles for buttons within the modal */
 .modal-content button {
-    padding: 10px 20px;
+    padding: 10px 20px; /* Adds padding around the button text */
     font-size: 16px;
-    cursor: pointer;
+    cursor: pointer; /* Changes cursor to pointer on hover */
 }
-
+/* Responsive styles for smaller screens */
 @media (max-width: 600px) {
     .window {
-        width: 100px;
-        height: 100px;
+        width: 100px; /* Reduces window size for smaller screens */
+        height: 100px; /* Adjusts height to maintain aspect ratio */
     }
 }
