@@ -28,17 +28,28 @@ Styling for the game, including the modal popups, windows, and background.
 #### JavaScript (ES6): 
 Core game logic, event handling, and dynamic rendering of images.
 
-## How to Play:
-1: When the game starts, you will see four windows.
+## In-Game Screenshots for Certains Stages:
+1: Upon launching the game, an instructional dialog box will appear, guiding players through the basic rules and objectives. This modal ensures that users understand how to identify the criminal among the civilians and the consequences of their actions. By clearly outlining the gameplay mechanics, the dialog enhances user experience and prepares players for the challenges ahead.
+![Screenshot](assets/images/intro-info-screen.jpeg)
 
 2: The game begins with an instruction modal explaining the rules. Press OK to start.
 
 3: Every round, a criminal and three innocent civilians will appear in the windows. The criminal can be identified by the gun.
+![Screenshot](assets/images/the-running-game-screen.jpeg)
 
 4: You have 2.5 seconds to click on the window containing the criminal. If successful, your score increases by 10 points, and a new round begins.
 
 5: The game continues until you either kill 20 criminals (win) or shoot an innocent or fail to identify the criminal in time (lose).
 If you lose, a game-over modal will pop up, allowing you to restart.
+If you shoot an innocent then this will appear:
+![Screenshot](assets/images/you-shot-an-innocent-screen.jpeg)
+If the player does not identify the criminal within the 2.5 sec period then this will appear:
+![Screenshot](assets/images/run-out-of-time-screen.jpeg)
+
+If the player manages to sucessfully target the 20 criminals on time without hitting any innocent or running out of time then this will appear:
+![Screenshot](assets/images/you-win-the-game.jpeg)
+
+There is alway the restart button. I found it a modern method and more dynamic to restart the game.
 
 
 
@@ -78,6 +89,9 @@ I have tested my JavaScript below in the screenshot:
 
 2: The criminal 1 & 2, innocent 1 & 2 images online free AI-image generator source: 
 https://deepai.org/machine-learning-model/3d-character-generator  .
+
+3: Mentorship: 
+I would like to thank my mentor, Tim Nelson, for his invaluable guidance and feedback throughout the development process. His insights greatly improved the game's design and functionality.
 
 
 
