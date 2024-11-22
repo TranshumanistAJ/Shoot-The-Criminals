@@ -51,7 +51,13 @@ If the player manages to sucessfully target the 20 criminals on time without hit
 
 There is alway the restart button. I found it a modern method and more dynamic to restart the game.
 
-
+## **Deployment**
+I deployed the page on GitHub Pages via the following procedure:
+1. From the project's [repository](https://github.com/TranshumanistAJ/Shoot-The-Criminals), go to the **Settings** tab.
+2. From the left-hand menu, select the **Pages** tab.
+3. Under the **Source** section, select the **Main** branch from the drop-down menu and click **Save**.
+4. A message will be displayed to indicate a successful deployment to GitHub Pages and provide the live link.
+The live site can be found at the following URL - [https://transhumanistaj.github.io/Shoot-The-Criminals/](https://transhumanistaj.github.io/Shoot-The-Criminals/).
 
 
 
